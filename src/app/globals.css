@@ -1,33 +1,202 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@charset "UTF-8";
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* リセットCSS */
+body, h1, h2, h3, p, figure, ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+*, *::before, *::after {
+	box-sizing: border-box;
 }
 
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+/****** メイン描画領域設定 *******/
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+	font-family: "ADLaM Display", "Open Sans", Meiryo, "メイリオ", Arial, sans-serif;
+	color: #222;
+	background-color: #f0f0f0
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+
+/****** タイトル *****/
+header {
+	background-color: #ffffff;
+	padding-top: 1px;
+	padding-left: 32px;
+	padding-right: 32px;
+	border-bottom: 1px solid #999;
+}
+.title {
+	color: #333;
+	font-weight: 700;
+}
+
+
+
+
+/****** テーブルとセレクトボックス ******/
+/* 中央寄せ */
+.result-set {
+	width: 90%;
+	margin: 0 auto;
+}
+
+/****** セレクトボックス ******/
+.select-folder-wrapper {
+	overflow: hidden;
+	width: 90%;
+	margin: 1.5em 0;
+}
+
+select {
+	/* 初期化 */
+	appearance: none;
+	background: transparent;
+	border: none;
+	color: #333;
+	outline: none;
+	padding-right: 1em;
+	/* 設定 */
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+	padding: 0 1em;
+}
+
+/* セレクトボックスを独自で加工 */
+.select-folder {
+	background: #ffffff;
+	border: solid 1px #999;
+	height: 40px;
+	width: 300px;
+	border-radius: 5px;
+	position: relative;
+	z-index: 1;
+	display: inline-block;
+}
+
+/* セレクトボックスの三角 */
+.select-folder::after {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	width: 0;
+	height: 0;
+	padding: 0;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid #707070;
+	pointer-events: none;
+}
+
+/* ホバーした時は色を変える */
+.select-folder:hover{
+	background-color: #fcfade;
+}
+.select-folder:hover::after{
+	border-top: 6px solid #2c9a7a;
+}
+
+
+/****** テーブル ******/
+table {
+	width: 90%;
+	min-width: 800px;
+	border: solid 1px #c2c2c2;
+	border-radius: 4px;
+	border-collapse: separate;
+	text-align: center;
+	/* td,th間の隙間をなくす */
+	border-spacing: 0;
+	/* 背景色 */
+	background-color: #ffffff;
+}
+
+/* 罫線の設定 */
+th {
+	color: #00836b;
+	border-bottom: solid 1px #bdbdbd;
+	padding: 10px 8px 9px;
+	background-color: #ffffff;
+}
+
+td {
+	/* ヘッダの線とかぶせる */
+	border-top: solid 1px #bdbdbd;
+	padding: 7px 0;
+}
+
+/* カラムの横幅設定 */
+.header-source {
+	width: 60%;
+}
+
+/* ソースファイル名の文字列は左揃え */
+.source {
+	text-align: left;
+	padding-left: 10px;
+}
+
+
+/* 背景色をしましまにする */
+tr:nth-child(even) {
+	background-color: #f6f6f6;
+}
+
+tr:nth-child(odd) {
+	background-color: #ffffff;
+}
+
+/* 行をホバーした時に色を変える */
+tr:hover {
+	background-color: #fcfade;
+}
+
+
+/****** 種別・状態・完了日登録ボタン ******/
+.type, .status, .date-register {
+	display: inline-block;
+	padding: 2px 6px;
+	border-radius: 20px;
+	min-width: 76px;
+	max-width: 122px;
+	color: #ffffff;
+}
+
+.status:hover, .date-register:hover {
+	cursor: pointer;
+}
+
+/* 種別 */
+.type-java {
+	background-color: #868cb7;
+}
+
+.type-html {
+	background-color: #e07b9a;
+}
+
+/* 状態ボタン */
+.status-active {
+	background-color: #4488c5;
+}
+
+.status-inactive {
+	background-color: #ed8077;
+}
+
+.status-complete {
+	background-color: #5eb5a6;
+}
+
+/* 完了日登録ボタン */
+.date-register {
+	background-color: #393939;
 }
