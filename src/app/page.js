@@ -1,36 +1,57 @@
-
-
 import Record from "@/components/S01_Record";
 import SelectFolder from "@/components/S01_SelectFolder";
-import { onClickStatus } from "@/script/S01_home";
-import Image from "next/image";
-import Script from "next/script";
+import { getAllSourcefile, onClickStatus } from "@/script/S01_home";
+// import { useEffect } from "react";
 
 export default function Home() {
+
+  // 初期表示処理でソースファイルの一覧を取得する
+  // let allSourcefile;
+  // useEffect(() => {
+  //   (async () => {
+  //     allSourcefile = await getAllSourcefile();
+  //     console.log(allSourcefile)
+  //   })()
+  // }, []);
+
+
   return (
     <main>
       <header>
-        <h1 class="title">SourceCode Reading Recorder</h1>
+        <h1 className="title">SourceCode Reading Recorder</h1>
       </header>
 
       {/* <!-- テーブルと表示フォルダ --> */}
-      <div class="result-set">
+      <div className="result-set">
 
         <SelectFolder />
 
         {/* <!-- テーブル --> */}
-        <div class="table">
+        <div className="table">
           <table>
             <thead>
               <tr>
                 <th>種別</th>
-                <th class="header-source">ソースファイル名</th>
+                <th className="header-source">ソースファイル名</th>
                 <th>状態</th>
                 <th>完了日</th>
               </tr>
             </thead>
 
             <tbody>
+              {/* {
+                allSourcefile.map(({categoryId, sourcefileName, statusId, sourcecodeCompleteDate=""}) => {
+                  return (
+                    <Record
+                    category={categoryId}
+                    sourcefile={sourcefileName}
+                    status={statusId}
+                    completeDate={sourcecodeCompleteDate == "" ? "" : sourcecodeCompleteDate}
+                  />    
+                  );
+                })
+              } */}
+
               <Record
                 category="1"
                 sourcefile="CredentialValidator.java"

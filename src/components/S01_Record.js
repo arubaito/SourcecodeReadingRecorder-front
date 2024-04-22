@@ -21,13 +21,13 @@ export default function Record({category, sourcefile, status, completeDate}) {
     const onClickStatus = (e) => {
 
 
-        
+
         let status = e.target.innerHTML;
     
         // 未対応-> 処理中
         if (status == "未対応") {
     
-            e.target.outerHTML = "<span class=\"status status-active\">処理中</span>"
+            e.target.outerHTML = "<span className=\"status status-active\">処理中</span>"
     
             // 変更した要素にハンドラ登録
             let statuses = document.getElementsByClassName('status')
@@ -40,7 +40,7 @@ export default function Record({category, sourcefile, status, completeDate}) {
             // 処理中-> 処理済み
         } else if (status == "処理中") {
     
-            e.target.outerHTML = "<span class=\"status status-complete\">処理済み</span>"
+            e.target.outerHTML = "<span className=\"status status-complete\">処理済み</span>"
     
             // 変更した要素にハンドラ登録
             let statuses = document.getElementsByClassName('status')
@@ -52,7 +52,7 @@ export default function Record({category, sourcefile, status, completeDate}) {
     
         } else if (status == "処理済み") {
     
-            e.target.outerHTML = "<span class=\"status status-inactive\">未対応</span>"
+            e.target.outerHTML = "<span className=\"status status-inactive\">未対応</span>"
     
             // 変更した要素にハンドラ登録
             let statuses = document.getElementsByClassName('status')
@@ -89,7 +89,7 @@ async function CreateCategory({category}){
     // Java
     if(category == "1"){
 
-        return (<span class="type type-java">Java</span>)
+        return (<span className="type type-java">Java</span>)
     }
 
 }
@@ -100,7 +100,7 @@ function CreateCompleteDate({completeDate, onClickDateRegister}){
     if(completeDate != undefined){
         return completeDate;
     } else {
-        return (<span class="date-register" onClick={onClickDateRegister}>登録</span>);
+        return (<span className="date-register" onClick={onClickDateRegister}>登録</span>);
     }
 }
 
@@ -110,15 +110,15 @@ function CreateStatus({status, onClickStatus}){
 
     if(status == "1"){
 
-        return (<span class="status status-inactive" onClick={onClickStatus}>未対応</span>)
+        return (<span className="status status-inactive" onClick={onClickStatus}>未対応</span>)
 
     } else if (status == "2"){
         
-        return (<span class="status status-active" onClick={onClickStatus}>処理中</span>)
+        return (<span className="status status-active" onClick={onClickStatus}>処理中</span>)
 
     } else {
         
-        return (<span class="status status-complete" onClick={onClickStatus}>処理済み</span>)
+        return (<span className="status status-complete" onClick={onClickStatus}>処理済み</span>)
 
     }        
 }
