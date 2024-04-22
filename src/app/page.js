@@ -43,34 +43,28 @@ export default function Home() {
             </thead>
 
             <tbody>
-              <tr>
-                <td>
-                  <span class="type type-java">Java</span>
-                </td>
-                <td class="source">AggregateFunction.java</td>
-                <td>
-                  <span class="status status-inactive">未対応</span>
-                </td>
-                <td>2024/03/26</td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="type type-java">Java</span>
-                </td>
-                <td class="source">CredentialValidator.java</td>
-                <td>
-                  <span class="status status-complete">処理済み</span>
-                </td>
-                <td>
-                  <span class="date-register">登録</span>
-                </td>
-              </tr>
+              <Record
+                category="1"
+                sourcefile="CredentialValidator.java"
+                status="1"
+                completeDate="2024/03/26"
+              />
+              <Record
+                category="1"
+                sourcefile="Aggregate.java"
+                status="2"
+              />
+              <Record
+                category="1"
+                sourcefile="AggregateFunction.java"
+                status="3"
+                completeDate="2024/03/26"
+              />
             </tbody>
 
           </table>
         </div>
       </div>
-      <Script src="../script/S01_home.js"></Script>
     </main>
 
   );
