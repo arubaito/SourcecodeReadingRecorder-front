@@ -1,5 +1,6 @@
 export default function SelectFolder() {
     return (
+        <>
         <div div className="select-folder-wrapper" >
             <form>
                 <label>表示中：</label>
@@ -13,5 +14,6 @@ export default function SelectFolder() {
                 </div>
             </form>
         </div>
+        </>
     )
 }
