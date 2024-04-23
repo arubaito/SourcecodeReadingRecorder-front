@@ -29,7 +29,7 @@ export default async function Home() {
                 <th>種別</th>
                 <th className="header-source">ソースファイル名</th>
                 <th>状態</th>
-                <th>完了日</th>
+                <th className="header-complete-date">完了日</th>
               </tr>
             </thead>
 

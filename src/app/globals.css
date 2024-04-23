@@ -136,6 +136,10 @@ td {
 	width: 60%;
 }
 
+.header-complete-date {
+	width: 18%;
+}
+
 /* ソースファイル名の文字列は左揃え */
 .source {
 	text-align: left;
