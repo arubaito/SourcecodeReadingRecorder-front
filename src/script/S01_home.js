@@ -2,6 +2,8 @@
 export async function getAllSourcefile() {
     try {
 
+        // Tomcatにデプロイした場合のURL（コンテキストパスがsourcecode-reading-recorder）
+        // http://localhost:8080/sourcecode-reading-recorder/get-all-sourcefile
         const response = await fetch("http://localhost:8080/get-all-sourcefile");
         const res = await response.json();
         return res;
