@@ -1,19 +1,14 @@
 import Record from "@/components/S01_Record";
 import SelectFolder from "@/components/S01_SelectFolder";
-import { getAllSourcefile, onClickStatus } from "@/script/S01_home";
-// import { useEffect } from "react";
+import { getAllSourcefile } from "@/script/S01_home";
 
-export default function Home() {
+export default async function Home() {
 
   // 初期表示処理でソースファイルの一覧を取得する
-  // let allSourcefile;
-  // useEffect(() => {
-  //   (async () => {
-  //     allSourcefile = await getAllSourcefile();
-  //     console.log(allSourcefile)
-  //   })()
-  // }, []);
-
+  let allSourcefile = await getAllSourcefile();
+  console.log("------allSourcefile------")
+  console.log(allSourcefile)
+  console.log("------------")
 
   return (
     <main>
@@ -39,36 +34,18 @@ export default function Home() {
             </thead>
 
             <tbody>
-              {/* {
-                allSourcefile.map(({categoryId, sourcefileName, statusId, sourcecodeCompleteDate=""}) => {
+              {
+                allSourcefile.map(({ categoryId, sourcefileName, statusId, completeDate = "" }) => {
                   return (
                     <Record
-                    category={categoryId}
-                    sourcefile={sourcefileName}
-                    status={statusId}
-                    completeDate={sourcecodeCompleteDate == "" ? "" : sourcecodeCompleteDate}
-                  />    
+                      category={categoryId}
+                      sourcefile={sourcefileName}
+                      status={statusId}
+                      completeDate={completeDate == "" ? "" : completeDate}
+                    />
                   );
                 })
-              } */}
-
-              <Record
-                category="1"
-                sourcefile="CredentialValidator.java"
-                status="1"
-                completeDate="2024/03/26"
-              />
-              <Record
-                category="1"
-                sourcefile="Aggregate.java"
-                status="2"
-              />
-              <Record
-                category="1"
-                sourcefile="AggregateFunction.java"
-                status="3"
-                completeDate="2024/03/26"
-              />
+              }
             </tbody>
 
           </table>
