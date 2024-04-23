@@ -17,13 +17,6 @@ export default function Status({ status }) {
             e.target.classList.remove("status-inactive")
             e.target.classList.add("status-active")
 
-
-            // 変更した要素にハンドラ登録
-            let statuses = document.getElementsByClassName('status')
-            for (let i = 0; i < statuses.length; i++) {
-                statuses[i].addEventListener("click", onClickStatus)
-            }
-
             //TODO DB登録処理
 
             // 処理中-> 処理済み
@@ -35,12 +28,6 @@ export default function Status({ status }) {
             e.target.classList.remove("status-active")
             e.target.classList.add("status-complete")
 
-            // 変更した要素にハンドラ登録
-            let statuses = document.getElementsByClassName('status')
-            for (let i = 0; i < statuses.length; i++) {
-                statuses[i].addEventListener("click", onClickStatus)
-            }
-
             //TODO DB登録処理
 
         } else if (status == "処理済み") {
@@ -50,12 +37,6 @@ export default function Status({ status }) {
             e.target.innerHTML = "未対応"
             e.target.classList.remove("status-complete")
             e.target.classList.add("status-inactive")
-
-            // 変更した要素にハンドラ登録
-            let statuses = document.getElementsByClassName('status')
-            for (let i = 0; i < statuses.length; i++) {
-                statuses[i].addEventListener("click", onClickStatus)
-            }
 
             //TODO DB登録処理
 
