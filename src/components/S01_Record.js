@@ -20,15 +20,21 @@ export default function Record({category, sourcefile, status, completeDate}) {
     // 状態のボタンを押した時のハンドラ
     const onClickStatus = (e) => {
 
-
-
         let status = e.target.innerHTML;
     
+        console.log("--onClickStatus--")
+        console.log(e)
+
         // 未対応-> 処理中
         if (status == "未対応") {
     
-            e.target.outerHTML = "<span class=\"status status-active\">処理中</span>"
+            // e.target.outerHTML = "<span class=\"status status-active\">処理中</span>"
     
+            e.target.innerHTML = "処理中";
+            e.target.classList.remove("status-inactive")
+            e.target.classList.add("status-active")
+
+
             // 変更した要素にハンドラ登録
             let statuses = document.getElementsByClassName('status')
             for (let i = 0; i < statuses.length; i++) {
@@ -40,8 +46,12 @@ export default function Record({category, sourcefile, status, completeDate}) {
             // 処理中-> 処理済み
         } else if (status == "処理中") {
     
-            e.target.outerHTML = "<span class=\"status status-complete\">処理済み</span>"
+            // e.target.outerHTML = "<span class=\"status status-complete\">処理済み</span>"
     
+            e.target.innerHTML = "処理済み"
+            e.target.classList.remove("status-active")
+            e.target.classList.add("status-complete")
+
             // 変更した要素にハンドラ登録
             let statuses = document.getElementsByClassName('status')
             for (let i = 0; i < statuses.length; i++) {
@@ -52,8 +62,12 @@ export default function Record({category, sourcefile, status, completeDate}) {
     
         } else if (status == "処理済み") {
     
-            e.target.outerHTML = "<span class=\"status status-inactive\">未対応</span>"
+            // e.target.outerHTML = "<span class=\"status status-inactive\">未対応</span>"
     
+            e.target.innerHTML = "未対応"
+            e.target.classList.remove("status-complete")
+            e.target.classList.add("status-inactive")
+
             // 変更した要素にハンドラ登録
             let statuses = document.getElementsByClassName('status')
             for (let i = 0; i < statuses.length; i++) {
