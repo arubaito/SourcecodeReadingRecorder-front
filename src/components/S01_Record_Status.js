@@ -57,7 +57,6 @@ export default function Status({ status }) {
         
         <CreateStatus status={status} onClickStatus={onClickStatus} />
     )
-
 }
 
 // 状態の要素を生成するコンポーネント

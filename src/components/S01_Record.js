@@ -31,6 +31,4 @@ function CreateCategory({category}){
 
         return (<span className="type type-java">Java</span>)
     }
-
 }
-
