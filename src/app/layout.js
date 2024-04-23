@@ -1,7 +1,7 @@
-import { Inter } from "next/font/google";
+import { ADLaM_Display, Inter } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = ADLaM_Display({ subsets: ["latin"], weight: "400" });
 
 export const metadata = {
   title: "Sourcecode Reading Recorder",
