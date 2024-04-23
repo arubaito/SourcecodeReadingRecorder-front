@@ -27,7 +27,7 @@ export default function Record({category, sourcefile, status, completeDate}) {
         // 未対応-> 処理中
         if (status == "未対応") {
     
-            e.target.outerHTML = "<span className=\"status status-active\">処理中</span>"
+            e.target.outerHTML = "<span class=\"status status-active\">処理中</span>"
     
             // 変更した要素にハンドラ登録
             let statuses = document.getElementsByClassName('status')
@@ -40,7 +40,7 @@ export default function Record({category, sourcefile, status, completeDate}) {
             // 処理中-> 処理済み
         } else if (status == "処理中") {
     
-            e.target.outerHTML = "<span className=\"status status-complete\">処理済み</span>"
+            e.target.outerHTML = "<span class=\"status status-complete\">処理済み</span>"
     
             // 変更した要素にハンドラ登録
             let statuses = document.getElementsByClassName('status')
@@ -52,7 +52,7 @@ export default function Record({category, sourcefile, status, completeDate}) {
     
         } else if (status == "処理済み") {
     
-            e.target.outerHTML = "<span className=\"status status-inactive\">未対応</span>"
+            e.target.outerHTML = "<span class=\"status status-inactive\">未対応</span>"
     
             // 変更した要素にハンドラ登録
             let statuses = document.getElementsByClassName('status')
