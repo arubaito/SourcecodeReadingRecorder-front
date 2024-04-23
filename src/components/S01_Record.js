@@ -1,84 +1,10 @@
 'use client'
 
+import CompleteDate from "./S01_Record_CompleteDate";
+import Status from "./S01_Record_Status";
+
 export default function Record({category, sourcefile, status, completeDate}) {
     
-    // 完了日の登録ボタンを押した時のハンドラ
-    const onClickDateRegister = (e) => {
-        console.log(e)
-    
-        // 当日の日付を取得
-        let today = new Date();
-        let year = today.getFullYear();
-        let month = ("0" + (today.getMonth() + 1)).slice(-2);
-        let date = ("0" + (today.getDate())).slice(-2);
-    
-        let initDate = year + "-" + month + "-" + date;
-    
-        e.target.outerHTML = `<span><input type=\"date\" /></span>`;
-    }
-
-    // 状態のボタンを押した時のハンドラ
-    const onClickStatus = (e) => {
-
-        let status = e.target.innerHTML;
-    
-        console.log("--onClickStatus--")
-        console.log(e)
-
-        // 未対応-> 処理中
-        if (status == "未対応") {
-    
-            // e.target.outerHTML = "<span class=\"status status-active\">処理中</span>"
-    
-            e.target.innerHTML = "処理中";
-            e.target.classList.remove("status-inactive")
-            e.target.classList.add("status-active")
-
-
-            // 変更した要素にハンドラ登録
-            let statuses = document.getElementsByClassName('status')
-            for (let i = 0; i < statuses.length; i++) {
-                statuses[i].addEventListener("click", onClickStatus)
-            }
-    
-            //TODO DB登録処理
-    
-            // 処理中-> 処理済み
-        } else if (status == "処理中") {
-    
-            // e.target.outerHTML = "<span class=\"status status-complete\">処理済み</span>"
-    
-            e.target.innerHTML = "処理済み"
-            e.target.classList.remove("status-active")
-            e.target.classList.add("status-complete")
-
-            // 変更した要素にハンドラ登録
-            let statuses = document.getElementsByClassName('status')
-            for (let i = 0; i < statuses.length; i++) {
-                statuses[i].addEventListener("click", onClickStatus)
-            }
-    
-            //TODO DB登録処理
-    
-        } else if (status == "処理済み") {
-    
-            // e.target.outerHTML = "<span class=\"status status-inactive\">未対応</span>"
-    
-            e.target.innerHTML = "未対応"
-            e.target.classList.remove("status-complete")
-            e.target.classList.add("status-inactive")
-
-            // 変更した要素にハンドラ登録
-            let statuses = document.getElementsByClassName('status')
-            for (let i = 0; i < statuses.length; i++) {
-                statuses[i].addEventListener("click", onClickStatus)
-            }
-    
-            //TODO DB登録処理
-    
-        }
-    }
-
     return (
         <>
             <tr>
@@ -87,10 +13,10 @@ export default function Record({category, sourcefile, status, completeDate}) {
                 </td>
                 <td className="source">{sourcefile}</td>
                 <td>
-                    <CreateStatus status={status} onClickStatus={onClickStatus} />
+                    <Status status={status} />
                 </td>
                 <td>
-                    <CreateCompleteDate completeDate={completeDate}  onClickDateRegister={onClickDateRegister}/> 
+                    <CompleteDate completeDate={completeDate} />
                 </td>
             </tr>
         </>
@@ -108,31 +34,3 @@ async function CreateCategory({category}){
 
 }
 
-// 完了日の要素を生成するコンポーネント
-function CreateCompleteDate({completeDate, onClickDateRegister}){
-
-    if(completeDate != undefined){
-        return completeDate;
-    } else {
-        return (<span className="date-register" onClick={onClickDateRegister}>登録</span>);
-    }
-}
-
-
-// 状態の要素を生成するコンポーネント
-function CreateStatus({status, onClickStatus}){
-
-    if(status == "1"){
-
-        return (<span className="status status-inactive" onClick={onClickStatus}>未対応</span>)
-
-    } else if (status == "2"){
-        
-        return (<span className="status status-active" onClick={onClickStatus}>処理中</span>)
-
-    } else {
-        
-        return (<span className="status status-complete" onClick={onClickStatus}>処理済み</span>)
-
-    }        
-}
