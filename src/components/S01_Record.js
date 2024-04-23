@@ -24,7 +24,7 @@ export default function Record({category, sourcefile, status, completeDate}) {
 }
 
 // 種別の要素を生成するコンポーネント
-async function CreateCategory({category}){
+function CreateCategory({category}){
 
     // Java
     if(category == "1"){
