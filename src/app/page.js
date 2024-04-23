@@ -35,9 +35,10 @@ export default async function Home() {
 
             <tbody>
               {
-                allSourcefile.map(({ categoryId, sourcefileName, statusId, completeDate = "" }) => {
+                allSourcefile.map(({sourcefileId, categoryId, sourcefileName, statusId, completeDate = "" }) => {
                   return (
                     <Record
+                      sourcefileId={sourcefileId}
                       category={categoryId}
                       sourcefile={sourcefileName}
                       status={statusId}

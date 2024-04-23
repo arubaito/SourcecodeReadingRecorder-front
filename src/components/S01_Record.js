@@ -3,11 +3,11 @@
 import CompleteDate from "./S01_Record_CompleteDate";
 import Status from "./S01_Record_Status";
 
-export default function Record({category, sourcefile, status, completeDate}) {
+export default function Record({sourcefileId, category, sourcefile, status, completeDate}) {
     
     return (
         <>
-            <tr>
+            <tr id={sourcefileId}>
                 <td>
                     <CreateCategory category={category} />
                 </td>

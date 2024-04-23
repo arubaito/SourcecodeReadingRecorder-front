@@ -1,3 +1,5 @@
+import { updateStatus } from "@/script/S01_home";
+
 export default function Status({ status }) {
 
     // 状態のボタンを押した時のハンドラ
@@ -16,7 +18,11 @@ export default function Status({ status }) {
             e.target.classList.remove("status-inactive")
             e.target.classList.add("status-active")
 
-            //TODO DB登録処理
+            // 選択した要素のファイルIDを取得
+            let sourcefileId =  findSourcefileId(e);
+
+            // DB更新処理
+            updateStatus(sourcefileId, 2);
 
             /* 処理中-> 処理済み */
         } else if (status == "処理中") {
@@ -26,7 +32,11 @@ export default function Status({ status }) {
             e.target.classList.remove("status-active")
             e.target.classList.add("status-complete")
 
-            //TODO DB登録処理
+            // 選択した要素のファイルIDを取得
+            let sourcefileId =  findSourcefileId(e);
+
+            // DB更新処理
+            updateStatus(sourcefileId, 3);
 
         } else if (status == "処理済み") {
 
@@ -35,8 +45,11 @@ export default function Status({ status }) {
             e.target.classList.remove("status-complete")
             e.target.classList.add("status-inactive")
 
-            //TODO DB登録処理
+            // 選択した要素のファイルIDを取得
+            let sourcefileId =  findSourcefileId(e);
 
+            // DB更新処理
+            updateStatus(sourcefileId, 1);
         }
     }
 
@@ -63,4 +76,24 @@ function CreateStatus({ status, onClickStatus }) {
         return (<span className="status status-complete" onClick={onClickStatus}>処理済み</span>)
 
     }
+}
+
+// 選択された要素の祖先の要素に指定されているid属性のソースファイルIDを取得する
+function findSourcefileId(e){
+
+    // 親要素がなくなるまでidの検索を繰り返す。ただし親要素にidが設定されていた場合はそのidを返す。
+    let node = e.target.parentNode;
+    while(node !== null){
+
+        if(node.id != ""){
+
+            return node.id;
+        }
+
+        // 更に親要素を取得
+        node = node.parentNode;
+    }
+
+    // 祖先要素にidが無い場合（ホントはエラーで処理を中断したい）
+    return 0;
 }

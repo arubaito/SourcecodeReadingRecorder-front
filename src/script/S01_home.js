@@ -10,3 +10,17 @@ export async function getAllSourcefile() {
         console.log(err);
     }
 }
+
+// 引数に与えられたidでソースファイルの状態を更新
+export async function updateStatus(sourcefileId, statusId) {
+
+    console.log("---updateStatus---")
+
+    try {
+
+        const response = await fetch(`http://localhost:8080/update-status?sourceFileId=${sourcefileId}&statusId=${statusId}`);
+    } catch (err) {
+
+        console.log(err);
+    }
+}
