@@ -37,13 +37,10 @@ header {
 	font-weight: 700;
 }
 
-
-
-
 /****** テーブルとセレクトボックス ******/
 /* 中央寄せ */
 .result-set {
-	width: 90%;
+	width: 85%;
 	margin: 0 auto;
 }
 
@@ -107,7 +104,7 @@ select {
 
 /****** テーブル ******/
 table {
-	width: 90%;
+	width: 100%;
 	min-width: 800px;
 	border: solid 1px #c2c2c2;
 	border-radius: 4px;
