@@ -8,22 +8,20 @@ export default function Status({ status }) {
         console.log("--onClickStatus--")
         console.log(e)
 
-        // 未対応-> 処理中
+        /* 未対応-> 処理中 */
         if (status == "未対応") {
 
-            // e.target.outerHTML = "<span class=\"status status-active\">処理中</span>"
-
+            // 要素を「処理中」に変更
             e.target.innerHTML = "処理中";
             e.target.classList.remove("status-inactive")
             e.target.classList.add("status-active")
 
             //TODO DB登録処理
 
-            // 処理中-> 処理済み
+            /* 処理中-> 処理済み */
         } else if (status == "処理中") {
 
-            // e.target.outerHTML = "<span class=\"status status-complete\">処理済み</span>"
-
+            // 要素を「処理済み」に変更
             e.target.innerHTML = "処理済み"
             e.target.classList.remove("status-active")
             e.target.classList.add("status-complete")
@@ -32,8 +30,7 @@ export default function Status({ status }) {
 
         } else if (status == "処理済み") {
 
-            // e.target.outerHTML = "<span class=\"status status-inactive\">未対応</span>"
-
+            // 要素を「未対応」に変更
             e.target.innerHTML = "未対応"
             e.target.classList.remove("status-complete")
             e.target.classList.add("status-inactive")
