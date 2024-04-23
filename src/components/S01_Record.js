@@ -71,7 +71,7 @@ export default function Record({category, sourcefile, status, completeDate}) {
                 <td>
                     <CreateCategory category={category} />
                 </td>
-                <td class="source">{sourcefile}</td>
+                <td className="source">{sourcefile}</td>
                 <td>
                     <CreateStatus status={status} onClickStatus={onClickStatus} />
                 </td>
