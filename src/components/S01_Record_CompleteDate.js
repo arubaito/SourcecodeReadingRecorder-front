@@ -9,10 +9,13 @@ export default function CompleteDate({completeDate}){
         let year = today.getFullYear();
         let month = ("0" + (today.getMonth() + 1)).slice(-2);
         let date = ("0" + (today.getDate())).slice(-2);
-    
         let initDate = year + "-" + month + "-" + date;
     
-        e.target.outerHTML = `<span><input type=\"date\" /></span>`;
+       	// 初期値に当日の日付を設定した日付入力欄を作成
+        e.target.outerHTML = `<span><input id=\"date\" type=\"date\" class=\"\" /></span>`;
+        
+        const inputDate = document.getElementById("date");
+        inputDate.value = initDate;
     }
 
     return (
