@@ -26,3 +26,37 @@ export async function updateStatus(sourcefileId, statusId) {
         console.log(err);
     }
 }
+
+// 引数に渡された完了日でソースファイルの完了日を更新
+export async function updateCompleteDate(sourcefileId, completeDate) {
+
+    console.log("---updateCompleteDate---")
+
+    try {
+
+        const response = await fetch(`http://localhost:8080/update-complete-date?sourceFileId=${sourcefileId}&completeDate=${completeDate}`);
+    } catch (err) {
+
+        console.log(err);
+    }
+}
+
+// 選択された要素の祖先の要素に指定されているid属性のソースファイルIDを取得する
+export function findSourcefileId(e){
+
+    // 親要素がなくなるまでidの検索を繰り返す。ただし親要素にidが設定されていた場合はそのidを返す。
+    let node = e.target.parentNode;
+    while(node !== null){
+
+        if(node.id != ""){
+
+            return node.id;
+        }
+
+        // 更に親要素を取得
+        node = node.parentNode;
+    }
+
+    // 祖先要素にidが無い場合（ホントはエラーで処理を中断したい）
+    return 0;
+}

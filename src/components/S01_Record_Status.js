@@ -1,4 +1,4 @@
-import { updateStatus } from "@/script/S01_home";
+import { findSourcefileId, updateStatus } from "@/script/S01_home";
 
 export default function Status({ status }) {
 
@@ -77,22 +77,3 @@ function CreateStatus({ status, onClickStatus }) {
     }
 }
 
-// 選択された要素の祖先の要素に指定されているid属性のソースファイルIDを取得する
-function findSourcefileId(e){
-
-    // 親要素がなくなるまでidの検索を繰り返す。ただし親要素にidが設定されていた場合はそのidを返す。
-    let node = e.target.parentNode;
-    while(node !== null){
-
-        if(node.id != ""){
-
-            return node.id;
-        }
-
-        // 更に親要素を取得
-        node = node.parentNode;
-    }
-
-    // 祖先要素にidが無い場合（ホントはエラーで処理を中断したい）
-    return 0;
-}
