@@ -1,6 +1,6 @@
 import Record from "@/components/S01_Record";
 import SelectFolder from "@/components/S01_SelectFolder";
-import { getAllSourcefile } from "@/script/S01_home";
+import { getAllPackage, getAllSourcefile } from "@/script/S01_home";
 
 export default async function Home() {
 
@@ -8,6 +8,12 @@ export default async function Home() {
   let allSourcefile = await getAllSourcefile();
   console.log("------allSourcefile------")
   console.log(allSourcefile)
+  console.log("------------")
+  
+  // 初期表示処理でパッケージの一覧を取得する
+  let allPackage = await getAllPackage();
+  console.log("------allPackage------")
+  console.log(allPackage)
   console.log("------------")
 
   return (
@@ -19,7 +25,7 @@ export default async function Home() {
       {/* <!-- テーブルと表示フォルダ --> */}
       <div className="result-set">
 
-        <SelectFolder />
+        <SelectFolder allPackage={allPackage}/>
 
         {/* <!-- テーブル --> */}
         <div className="table">

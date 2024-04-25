@@ -27,6 +27,19 @@ export async function updateStatus(sourcefileId, statusId) {
     }
 }
 
+// 全てのパッケージをサーバから取得する関数
+export async function getAllPackage() {
+	try {
+
+		const response = await fetch("http://localhost:8080/get-all-package");
+		const res = await response.json();
+		return res;
+	} catch (err) {
+
+		console.log(err);
+	}
+}
+
 // 引数に渡された完了日でソースファイルの完了日を更新
 export async function updateCompleteDate(sourcefileId, completeDate) {
 
