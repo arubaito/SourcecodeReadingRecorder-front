@@ -24,7 +24,7 @@ export default function Table({ allSourcefile, allPackage }) {
     return (
         <>
             {/* セレクトボックス */}
-            <div div className="select-folder-wrapper" >
+            <div className="select-folder-wrapper" >
                 <form>
                     <label>表示中：</label>
                     <div className="select-folder">
