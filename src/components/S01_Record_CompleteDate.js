@@ -1,42 +1,35 @@
+'use client'
+
 import { findSourcefileId, updateCompleteDate } from "@/script/S01_home";
+import { useRef, useState } from "react";
 
 export default function CompleteDate({ completeDate }) {
 
-    // 完了日の登録ボタンを押した時のハンドラ
-    const onClickDateRegister = (e) => {
-        console.log(e)
+    // 登録ボタンを押したかどうかのフラグ
+    const [registerButtonClickFlug, setRegisterButtonClickFlug] = useState(true)
 
-        // 当日の日付を取得
-        let today = new Date();
-        let year = today.getFullYear();
-        let month = ("0" + (today.getMonth() + 1)).slice(-2);
-        let date = ("0" + (today.getDate())).slice(-2);
-        let initDate = year + "-" + month + "-" + date;
-
-        // 初期値に当日の日付を設定した日付入力欄を作成
-        e.target.outerHTML = `<span><input id=\"date\" type=\"date\" class=\"\" /></span>`;
-        const inputDate = document.getElementById("date");
-        inputDate.value = initDate;
-
-        // 日付入力欄のフォーカスが外れると、APIを呼び出してデータを登録する
-        inputDate.addEventListener("blur", dateRegister)
+    // 登録ボタンを押したらフラグを反転する
+    const onClickRegisterButton = () => {
+        setRegisterButtonClickFlug(!registerButtonClickFlug)
     }
 
-    return (
-        <CreateCompleteDate completeDate={completeDate} onClickDateRegister={onClickDateRegister} />
-    )
+    // TODO:当日の日付を生成して、入力フォームの初期値に設定する
+    // let today = new Date();
+    // let year = today.getFullYear();
+    // let month = ("0" + (today.getMonth() + 1)).slice(-2);
+    // let date = ("0" + (today.getDate())).slice(-2);
+    // let initDate = year + "-" + month + "-" + date;
 
-}
-
-// 完了日の要素を生成するコンポーネント
-function CreateCompleteDate({ completeDate, onClickDateRegister }) {
-
+    // completeDateが空欄ならば登録ボタンを表示する
     if (completeDate != undefined) {
 
         return completeDate;
     } else {
 
-        return (<span className="date-register" onClick={onClickDateRegister}>登録</span>);
+        // フラグが反転したら入力フォームを出す
+        return (registerButtonClickFlug ?
+            (<span className="date-register" onClick={onClickRegisterButton}>登録</span>) :
+            <span><input id="date" type="date" onBlur={dateRegister} /></span>);
     }
 }
 
