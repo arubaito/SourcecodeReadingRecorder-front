@@ -34,7 +34,7 @@ export default function Table({ allSourcefile, allPackage }) {
                                 // APIから取得したパッケージを選択肢にする
                                 allPackage.map(({ packageId, packageName }) => {
                                     return (
-                                        <option value={packageId}>{packageName}</option>
+                                        <option key={packageId} value={packageId}>{packageName}</option>
                                     );
                                 })
                             }
@@ -60,6 +60,7 @@ export default function Table({ allSourcefile, allPackage }) {
                             sourcefiles.map(({ sourcefileId, categoryId, sourcefileName, statusId, completeDate = "" }) => {
                                 return (
                                     <Record
+                                        key={sourcefileId}
                                         sourcefileId={sourcefileId}
                                         category={categoryId}
                                         sourcefile={sourcefileName}
