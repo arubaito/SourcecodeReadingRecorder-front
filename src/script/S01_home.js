@@ -29,15 +29,15 @@ export async function updateStatus(sourcefileId, statusId) {
 
 // 全てのパッケージをサーバから取得する関数
 export async function getAllPackage() {
-	try {
+    try {
 
-		const response = await fetch("http://localhost:8080/get-all-package");
-		const res = await response.json();
-		return res;
-	} catch (err) {
+        const response = await fetch("http://localhost:8080/get-all-package");
+        const res = await response.json();
+        return res;
+    } catch (err) {
 
-		console.log(err);
-	}
+        console.log(err);
+    }
 }
 
 // 引数に渡された完了日でソースファイルの完了日を更新
@@ -54,14 +54,30 @@ export async function updateCompleteDate(sourcefileId, completeDate) {
     }
 }
 
+// 引数に与えられたパッケージidのソースファイルを取得
+export async function getSourceFileByPackageId(packageId) {
+
+    console.log("---getSourceFileByPackageId---")
+
+    try {
+
+        const response = await fetch(`http://localhost:8080/get-sourcefile?packageId=${packageId}`);
+        const res = await response.json();
+        return res;
+    } catch (err) {
+
+        console.log(err);
+    }
+}
+
 // 選択された要素の祖先の要素に指定されているid属性のソースファイルIDを取得する
-export function findSourcefileId(e){
+export function findSourcefileId(e) {
 
     // 親要素がなくなるまでidの検索を繰り返す。ただし親要素にidが設定されていた場合はそのidを返す。
     let node = e.target.parentNode;
-    while(node !== null){
+    while (node !== null) {
 
-        if(node.id != ""){
+        if (node.id != "") {
 
             return node.id;
         }
