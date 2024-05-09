@@ -4,7 +4,7 @@ export async function getAllSourcefile() {
 
         // Tomcatにデプロイした場合のURL（コンテキストパスがsourcecode-reading-recorder）
         // http://localhost:8080/sourcecode-reading-recorder/get-all-sourcefile
-        const response = await fetch("http://44.223.126.94:8080/sourcecode-reading-recorder/get-all-sourcefile");
+        const response = await fetch("https://44.223.126.94:8443/sourcecode-reading-recorder/get-all-sourcefile");
         const res = await response.json();
         return res;
     } catch (err) {
@@ -20,7 +20,7 @@ export async function updateStatus(sourcefileId, statusId) {
 
     try {
 
-        const response = await fetch(`http://44.223.126.94:8080/sourcecode-reading-recorder/update-status?sourceFileId=${sourcefileId}&statusId=${statusId}`);
+        const response = await fetch(`https://44.223.126.94:8443/sourcecode-reading-recorder/update-status?sourceFileId=${sourcefileId}&statusId=${statusId}`);
     } catch (err) {
 
         console.log(err);
@@ -31,7 +31,7 @@ export async function updateStatus(sourcefileId, statusId) {
 export async function getAllPackage() {
     try {
 
-        const response = await fetch("http://44.223.126.94:8080/sourcecode-reading-recorder/get-all-package");
+        const response = await fetch("https://44.223.126.94:8443/sourcecode-reading-recorder/get-all-package");
         const res = await response.json();
         return res;
     } catch (err) {
@@ -47,7 +47,7 @@ export async function updateCompleteDate(sourcefileId, completeDate) {
 
     try {
 
-        const response = await fetch(`http://44.223.126.94:8080/sourcecode-reading-recorder/update-complete-date?sourceFileId=${sourcefileId}&completeDate=${completeDate}`);
+        const response = await fetch(`https://44.223.126.94:8443/sourcecode-reading-recorder/update-complete-date?sourceFileId=${sourcefileId}&completeDate=${completeDate}`);
     } catch (err) {
 
         console.log(err);
@@ -61,7 +61,7 @@ export async function getSourceFileByPackageId(packageId) {
 
     try {
 
-        const response = await fetch(`http://44.223.126.94:8080/sourcecode-reading-recorder/get-sourcefile?packageId=${packageId}`);
+        const response = await fetch(`https://44.223.126.94:8443/sourcecode-reading-recorder/get-sourcefile?packageId=${packageId}`);
         const res = await response.json();
         return res;
     } catch (err) {
