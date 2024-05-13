@@ -4,7 +4,7 @@ export async function getAllSourcefile() {
 
         // Tomcatにデプロイした場合のURL（コンテキストパスがsourcecode-reading-recorder）
         // http://localhost:8080/sourcecode-reading-recorder/get-all-sourcefile
-        const response = await fetch("https://44.223.126.94:8443/sourcecode-reading-recorder/get-all-sourcefile");
+        const response = await fetch("https://44.223.126.94:8443/sourcecode-reading-recorder/get-all-sourcefile", { cache: "no-store" });
         const res = await response.json();
         return res;
     } catch (err) {
@@ -31,7 +31,7 @@ export async function updateStatus(sourcefileId, statusId) {
 export async function getAllPackage() {
     try {
 
-        const response = await fetch("https://44.223.126.94:8443/sourcecode-reading-recorder/get-all-package");
+        const response = await fetch("https://44.223.126.94:8443/sourcecode-reading-recorder/get-all-package", { cache: "no-store" });
         const res = await response.json();
         return res;
     } catch (err) {

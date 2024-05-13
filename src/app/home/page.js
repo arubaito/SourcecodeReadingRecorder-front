@@ -1,6 +1,9 @@
 import Table from "@/components/S01_Table";
 import { getAllPackage, getAllSourcefile } from "@/script/S01_home";
 
+export const dynamic = "force-dynamic";
+export const fetchCache = "default-cache";
+
 export default async function Home() {
 
   // 初期表示処理でソースファイルの一覧を取得する
